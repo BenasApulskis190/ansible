@@ -1,0 +1,17 @@
+---
+- name: Install NVM
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+  # Downloads and runs the NVM installation script
+
+- name: Source NVM script
+  shell: |
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  # Sources the NVM script to make NVM commands available in the current session
+
+- name: Install Node.js via NVM
+  shell: |
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install --lts
+  # Installs the latest Long Term Support (LTS) version of Node.js using NVM

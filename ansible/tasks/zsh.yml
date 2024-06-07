@@ -1,0 +1,16 @@
+---
+- name: Install Zsh
+  apt:
+    name: zsh       # Specifies the package name to install
+    state: present  # Ensures the package is installed and up to date
+  # Installs Zsh (Z shell) using the apt package manager
+
+- name: Install Oh My Zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # Downloads and runs the Oh My Zsh installation script from the official repository
+
+- name: Set Zsh as default shell
+  user:
+    name: "{{ ansible_user_id }}"  # Specifies the current user
+    shell: /bin/zsh                # Sets Zsh as the default shell for the user
+  # Sets Zsh as the default shell for the current user

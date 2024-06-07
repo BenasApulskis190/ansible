@@ -1,0 +1,32 @@
+---
+- name: Update and upgrade apt packages on Debian-based systems
+  apt:
+    update_cache: yes  # Updates the apt package cache
+    upgrade: dist      # Upgrades all installed packages to their latest version
+  when: ansible_os_family == "Debian"
+  # This task updates the package list and upgrades all packages to their latest version on Debian-based systems.
+
+- name: Install common packages on Debian-based systems
+  apt:
+    name:
+      - curl              # Command-line tool for transferring data with URLs
+      - git               # Version control system
+      - build-essential   # Package containing a list of essential tools for building software
+    state: present        # Ensures these packages are installed and up to date
+  when: ansible_os_family == "Debian"
+  # This task installs common development packages such as curl, git, and build-essential on Debian-based systems.
+
+- name: Install Homebrew on macOS
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when: ansible_os_family == "Darwin"
+  # Installs Homebrew, the package manager for macOS, if it is not already installed
+
+- name: Install common packages using Homebrew on macOS
+  homebrew:
+    name:
+      - curl              # Command-line tool for transferring data with URLs
+      - git               # Version control system
+      - build-essential   # Essential tools for building software
+    state: present        # Ensures these packages are installed and up to date
+  when: ansible_os_family == "Darwin"
+  # This task installs common development packages such as curl, git, and build-essential on macOS using Homebrew.

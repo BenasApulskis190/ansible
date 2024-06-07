@@ -1,0 +1,6 @@
+---
+- name: Install TypeScript
+  npm:
+    name: typescript  # Specifies the package name to install
+    global: yes       # Ensures the package is installed globally
+  # Installs TypeScript globally using npm (Node Package Manager)
