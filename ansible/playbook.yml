@@ -3,6 +3,7 @@
   hosts: local  # Targets the hosts defined in the "local" group in the
   tasks:
     - import_tasks: tasks/main.yml
+    - import_tasks: tasks/brave.yml
     - import_tasks: tasks/node.yml
     - import_tasks: tasks/typescript.yml
     - import_tasks: tasks/zsh.yml
